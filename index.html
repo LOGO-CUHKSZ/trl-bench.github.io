@@ -138,10 +138,6 @@
             <span class="icon"><i class="fas fa-database"></i></span>
             <span>Data</span>
           </a>
-          <a href="https://huggingface.co/papers/2606.09323" target="_blank" rel="noopener" class="button is-dark">
-            <span class="icon"><i class="fas fa-heart"></i></span>
-            <span>Hugging Face</span>
-          </a>
         </div>
 
         <!-- Hero teaser: TRL-Bench at a glance -->
@@ -346,7 +342,7 @@
         <div class="frontier-card">
           <div class="frontier-icon"><i class="fas fa-chart-pie"></i></div>
           <h4>No universal encoder</h4>
-          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT). Quality is capability-specific, not one leaderboard.</p>
+          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT), and TaBERT leads Grounding (0.198 NR&nbsp;&darr;). Quality is capability-specific, not one leaderboard.</p>
         </div>
         <div class="frontier-card">
           <div class="frontier-icon"><i class="fas fa-puzzle-piece"></i></div>
@@ -356,7 +352,7 @@
         <div class="frontier-card">
           <div class="frontier-icon"><i class="fas fa-shuffle"></i></div>
           <h4>Row signal is not monolithic</h4>
-          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
+          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, 0.418 F1; GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
         </div>
       </div>
 
@@ -364,39 +360,6 @@
       <div class="pipeline-section" style="margin-top: 2.5rem; max-width: 760px; margin-left: auto; margin-right: auto;">
         <img src="./static/images/capability-radar.png" alt="Radar chart in which different tabular encoder families spike on different capability axes, illustrating that no single model dominates across capabilities" class="pipeline-image">
         <p class="pipeline-caption"><strong>No model spans every capability.</strong> Different encoder families peak on different capability axes &mdash; surface-text tasks reward generic text encoders, while cross-table alignment and matching reward structure-aware specialists.</p>
-      </div>
-
-      <!-- Leaders by capability (all three suites) -->
-      <h3 class="subsection-title" style="margin-top: 3rem;">Leaders by capability</h3>
-      <p class="section-subtitle">No single encoder leads everywhere &mdash; the strongest model differs by suite and by capability.</p>
-      <div class="components-grid leaders-grid">
-        <div class="component-card">
-          <div class="component-icon uivision"><i class="fas fa-table-columns"></i></div>
-          <h3>TRL-CTbench</h3>
-          <ul class="leader-list">
-            <li><strong>Starmie</strong> &mdash; Union Search, 0.662 MAP</li>
-            <li><strong>Starmie</strong> &mdash; Schema Matching, 0.764 R@GT</li>
-            <li><strong>TaBERT</strong> &mdash; best Grounding, 0.198 NR&nbsp;&darr;</li>
-          </ul>
-        </div>
-        <div class="component-card">
-          <div class="component-icon groundcua"><i class="fas fa-link"></i></div>
-          <h3>TRL-Rbench</h3>
-          <ul class="leader-list">
-            <li><strong>TabICL</strong> &mdash; Row Prediction, 0.816 AUROC</li>
-            <li><strong>BERT</strong> &mdash; Clean Linkage, 0.418 F1</li>
-            <li><strong>GTE</strong> &mdash; Robust Linkage, best NR&nbsp;&darr;</li>
-          </ul>
-        </div>
-        <div class="component-card">
-          <div class="component-icon videocua"><i class="fas fa-water"></i></div>
-          <h3>TRL-DLTE</h3>
-          <ul class="leader-list">
-            <li><strong>TUTA/GTE/GTE</strong> &mdash; 0.229 UJ-H (headline)</li>
-            <li><strong>Starmie/GTE/GTE</strong> &mdash; 0.253 UJ-H (test best)</li>
-            <li><strong>BERT/BERT/BERT</strong> &mdash; 0.139 (best monolith)</li>
-          </ul>
-        </div>
       </div>
 
       <!-- Representative DLTE pipelines -->
@@ -491,7 +454,6 @@
       <a href="https://arxiv.org/abs/2606.09323" target="_blank" rel="noopener">Paper</a> &middot;
       <a href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener">Code</a> &middot;
       <a href="https://huggingface.co/logo-lab" target="_blank" rel="noopener">Data</a> &middot;
-      <a href="https://huggingface.co/papers/2606.09323" target="_blank" rel="noopener">Hugging Face</a> &middot;
       <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">Interactive Viewer</a>
     </p>
     <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.7;">Page template adapted from cua-suite / Nerfies.</p>

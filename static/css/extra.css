@@ -13,8 +13,17 @@
 /* Hover the brand -> the logo spins clockwise, continuously, until the mouse leaves. */
 .navbar-brand:hover .logo-mark { animation: trl-logo-spin 1.8s linear infinite; }
 @keyframes trl-logo-spin { to { transform: rotate(360deg); } }
+
+/* Hero logo: same hover-to-spin behavior as the navbar mark. */
+.logo-container .logo-mark {
+  overflow: visible;          /* let the rounded square's corners show while spinning */
+  transform-origin: 50% 50%;
+}
+.logo-container .logo-mark:hover { animation: trl-logo-spin 1.8s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .navbar-brand:hover .logo-mark { animation: none; }
+  .navbar-brand:hover .logo-mark,
+  .logo-container .logo-mark:hover { animation: none; }
 }
 
 /* ---- Hero eyebrow ---- */
