@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="TRL-DLTE: Compositional Data-Lake Table Enrichment — the compositional suite of TRL-Bench. Benchmarking 1,120 table/column/row encoder pipelines over a 47,772-table data lake.">
-  <meta name="keywords" content="Tabular Representation Learning, TRL-Bench, TRL-DLTE, Data Lake, Table Enrichment, Table Embeddings, Record Linkage, Benchmark">
+  <meta name="description" content="TRL-Bench: a multi-granular benchmark that standardizes cross-paradigm, representation-level evaluation of tabular encoders. 20 encoders, 16 tasks, and 87 datasets across three suites — TRL-CTbench (column/table), TRL-Rbench (row), and TRL-DLTE (compositional data-lake table enrichment).">
+  <meta name="keywords" content="Tabular Representation Learning, TRL-Bench, TRL-CTbench, TRL-Rbench, TRL-DLTE, Tabular Encoders, Table Embeddings, Benchmark, Data Lake, Record Linkage, Schema Matching, Column Type Prediction">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRL-DLTE: Compositional Data-Lake Table Enrichment</title>
+  <title>TRL-Bench: Cross-Paradigm Representation-Level Evaluation of Tabular Encoders</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -35,10 +35,6 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item is-active" href="index.html">
-            <span class="icon"><i class="fas fa-cube"></i></span>
-            <span>TRL-DLTE</span>
-          </a>
           <a class="navbar-item" href="viewer/dlte_voxel.html" target="_blank" rel="noopener">
             <span class="icon"><i class="fas fa-vr-cardboard"></i></span>
             <span>Interactive Viewer</span>
@@ -50,6 +46,10 @@
           <a class="navbar-item" href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener">
             <span class="icon"><i class="fab fa-github"></i></span>
             <span>Code</span>
+          </a>
+          <a class="navbar-item" href="https://huggingface.co/logo-lab" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-database"></i></span>
+            <span>Data</span>
           </a>
         </div>
       </div>
@@ -68,39 +68,10 @@
           </svg>
         </div>
 
-        <p class="hero-eyebrow">TRL-Bench &middot; The Compositional Suite</p>
-        <h1 class="publication-title">TRL-DLTE: Compositional Data-Lake Table Enrichment</h1>
+        <p class="hero-eyebrow">A Multi-Granular Tabular Representation Learning Benchmark</p>
+        <h1 class="publication-title">TRL-Bench: Standardizing Cross-Paradigm Representation-Level Evaluation of Tabular Encoders</h1>
 
-        <p class="publication-subtitle">Can capability-matched table, column, and row encoders compose into an end-to-end enrichment pipeline over a 47,772-table data lake? We benchmark all <strong>1,120</strong> stage combinations under one standardized representation-level protocol.</p>
-
-        <div class="conference-badge">
-          <span class="badge-text">arXiv:2606.09323 &middot; Preprint &middot; June 2026</span>
-        </div>
-
-        <div class="publication-links">
-          <a href="https://arxiv.org/abs/2606.09323" target="_blank" rel="noopener" class="button is-accent">
-            <span class="icon"><i class="fas fa-file-pdf"></i></span>
-            <span>Paper</span>
-          </a>
-          <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener" class="button is-accent">
-            <span class="icon"><i class="fas fa-cube"></i></span>
-            <span>Interactive Viewer</span>
-          </a>
-          <a href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener" class="button is-dark">
-            <span class="icon"><i class="fab fa-github"></i></span>
-            <span>Code</span>
-          </a>
-          <a href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener" class="button is-dark">
-            <span class="icon"><i class="fas fa-database"></i></span>
-            <span>Data</span>
-          </a>
-        </div>
-
-        <!-- Hero teaser: annotated voxel landscape -->
-        <div class="hero-teaser-wrap">
-          <img src="./static/images/voxel_hero.png" alt="3D landscape of 1,120 DLTE pipelines colored by UJ-H, with the best hybrid TUTA/GTE/GTE (0.229) above the best monolith BERT/BERT/BERT (0.139)" class="hero-teaser">
-        </div>
-
+        <!-- Authors: directly under the title -->
         <div class="publication-authors">
           <div class="author-list">
             <span class="author-block lead-author">Wei Pang<sup>1,*</sup>,</span>
@@ -118,16 +89,50 @@
             <span class="author-block">Tianshu Yu<sup>1,&dagger;</sup></span>
           </div>
           <div class="author-affiliations">
-            <span class="author-block"><sup>1</sup>CUHK-Shenzhen</span>
+            <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong, Shenzhen</span>
             <span class="author-block"><sup>2</sup>University of Waterloo</span>
             <span class="author-block"><sup>3</sup>The University of Hong Kong</span>
-            <span class="author-block"><sup>4</sup>University of Sydney</span>
+            <span class="author-block"><sup>4</sup>The University of Sydney</span>
             <span class="author-block"><sup>5</sup>Universit&eacute; Lyon 1</span>
           </div>
           <div class="author-affiliations">
             <span class="author-block"><sup>*</sup>Core contributors</span>
             <span class="author-block"><sup>&dagger;</sup>Corresponding author: yutianshu@cuhk.edu.cn</span>
           </div>
+        </div>
+
+        <p class="publication-subtitle">Tabular encoders span many paradigms &mdash; different inputs, training objectives, and output heads &mdash; so models are hard to compare even when they operate on similar tabular signals. TRL-Bench unifies them at the level of the <strong>representation</strong>: each model exports row-, column-, or table-embeddings through one shared wrapper, and lightweight shared heads probe them across <strong>20 encoders</strong>, <strong>16 tasks</strong>, and <strong>87 datasets</strong> in three suites.</p>
+
+        <div class="conference-badge">
+          <span class="badge-text">arXiv:2606.09323 &middot; Preprint &middot; 2026</span>
+        </div>
+
+        <div class="publication-links">
+          <a href="https://arxiv.org/abs/2606.09323" target="_blank" rel="noopener" class="button is-accent">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>
+            <span>Paper</span>
+          </a>
+          <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener" class="button is-accent">
+            <span class="icon"><i class="fas fa-cube"></i></span>
+            <span>Interactive Viewer</span>
+          </a>
+          <a href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener" class="button is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>Code</span>
+          </a>
+          <a href="https://huggingface.co/logo-lab" target="_blank" rel="noopener" class="button is-dark">
+            <span class="icon"><i class="fas fa-database"></i></span>
+            <span>Data</span>
+          </a>
+          <a href="https://huggingface.co/papers/2606.09323" target="_blank" rel="noopener" class="button is-dark">
+            <span class="icon"><i class="fas fa-heart"></i></span>
+            <span>Hugging Face</span>
+          </a>
+        </div>
+
+        <!-- Hero teaser: TRL-Bench at a glance -->
+        <div class="hero-teaser-wrap">
+          <img src="./static/images/trl-bench-overview.png" alt="TRL-Bench at a glance: each model is processed once through its supported wrapper to export row, column, and table embeddings; shared lightweight modules then evaluate those embeddings across TRL-CTbench, TRL-Rbench, and TRL-DLTE" class="hero-teaser">
         </div>
       </div>
     </div>
@@ -138,10 +143,10 @@
     <div class="container is-max-desktop">
       <nav class="content-nav">
         <a href="#overview" class="nav-item active">Overview</a>
-        <a href="#pipeline" class="nav-item">Pipeline</a>
-        <a href="#demo" class="nav-item">Interactive Demo</a>
+        <a href="#suites" class="nav-item">Three Suites</a>
+        <a href="#dlte" class="nav-item">TRL-DLTE</a>
+        <a href="#demo" class="nav-item">Demo</a>
         <a href="#findings" class="nav-item">Findings</a>
-        <a href="#results" class="nav-item">Results</a>
         <a href="#citation" class="nav-item">Citation</a>
       </nav>
     </div>
@@ -151,80 +156,109 @@
   <section class="section" id="overview">
     <div class="container is-max-desktop">
       <h2 class="section-title">Overview</h2>
-      <p class="section-subtitle">TRL-DLTE is the compositional suite of <strong>TRL-Bench</strong>. Encoders export frozen table, column, and row embeddings through their wrappers; shared lightweight heads then probe them across an end-to-end enrichment pipeline &mdash; so models from different training paradigms become directly comparable.</p>
-
-      <!-- Teaser figure: benchmark construction / lake scale -->
-      <div class="pipeline-section figure-wide">
-        <img src="./static/images/figure2.png" alt="DLTE lake construction: 1,379 parent tables fragmented into targets and combined with CKAN distractors into a 47,772-table lake" class="pipeline-image">
-        <p class="pipeline-caption"><strong>Benchmark construction.</strong> (b)&nbsp;The DLTE lake: 1,379 TabFact/WTQ parents are fragmented into seeds, union targets, and join targets at four noise tiers; 11,032 targets are indexed with 36,740 CKAN distractors into a <strong>47,772-table</strong> retrieval lake (parent-disjoint 827/207/345 train/dev/test). (a)&nbsp;Row-prediction curation for TRL-Rbench (158 &rarr; 50 tables, 123 targets).</p>
-      </div>
+      <p class="section-subtitle">Tabular encoders are usually evaluated inside task-specific end-to-end pipelines, so a strong result may come from the wrapped predictor, training budget, and task-specific adaptation as much as from the encoder itself. TRL-Bench asks a comparability question: <em>under one shared protocol over the exported representations, how do heterogeneous tabular encoders actually differ?</em></p>
 
       <!-- Key stats -->
       <div class="stats-banner">
         <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-database"></i></div>
-          <div class="stat-number">47,772</div>
-          <div class="stat-label">Lake Tables</div>
-          <div class="stat-detail">11,032 targets + 36,740 distractors</div>
+          <div class="stat-icon"><i class="fas fa-cubes"></i></div>
+          <div class="stat-number">20</div>
+          <div class="stat-label">Encoders</div>
+          <div class="stat-detail">across every paradigm</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-table"></i></div>
-          <div class="stat-number">1,379</div>
-          <div class="stat-label">Parent Tables</div>
-          <div class="stat-detail">TabFact + WTQ</div>
+          <div class="stat-icon"><i class="fas fa-list-check"></i></div>
+          <div class="stat-number">16</div>
+          <div class="stat-label">Tasks</div>
+          <div class="stat-detail">over three suites</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-database"></i></div>
+          <div class="stat-number">87</div>
+          <div class="stat-label">Datasets</div>
+          <div class="stat-detail">SATO, SOTAB, Spider, OpenML&hellip;</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Suites</div>
+          <div class="stat-detail">row &middot; column &middot; table</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-water"></i></div>
+          <div class="stat-number">47,772</div>
+          <div class="stat-label">Lake Tables</div>
+          <div class="stat-detail">TRL-DLTE enrichment lake</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon"><i class="fas fa-diagram-project"></i></div>
           <div class="stat-number">1,120</div>
-          <div class="stat-label">Pipelines</div>
-          <div class="stat-detail">10 &times; 8 &times; 14 stages</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-cubes"></i></div>
-          <div class="stat-number">20</div>
-          <div class="stat-label">Encoders</div>
-          <div class="stat-detail">across paradigms</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
-          <div class="stat-number">4</div>
-          <div class="stat-label">Noise Tiers</div>
-          <div class="stat-detail">clean / schema / cell / hard</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-          <div class="stat-number">0.229</div>
-          <div class="stat-label">Best UJ-H</div>
-          <div class="stat-detail">hybrid TUTA/GTE/GTE</div>
+          <div class="stat-label">DLTE Pipelines</div>
+          <div class="stat-detail">10 &times; 8 &times; 14 stage combos</div>
         </div>
       </div>
 
-      <!-- Why DLTE -->
+      <!-- What makes TRL-Bench different -->
       <div class="components-grid">
         <div class="component-card">
           <div class="component-icon videocua"><i class="fas fa-recycle"></i></div>
           <h3>Encode once, reuse many</h3>
-          <p>Tabular encoders promise reusable embeddings: encode a lake once, index it, and reuse across tasks where per-task fine-tuning is impractical. DLTE tests that promise at lake scale.</p>
+          <p>In encode-once, reuse-many settings, tables are embedded once and reused across tasks and large multi-table corpora such as data lakes. The <strong>representation</strong> &mdash; not the task-specific wrapper &mdash; becomes the object of evaluation.</p>
         </div>
         <div class="component-card">
-          <div class="component-icon uivision"><i class="fas fa-layer-group"></i></div>
-          <h3>Three granularities, one task</h3>
-          <p>Enrichment needs <strong>table</strong> embeddings to retrieve, <strong>column</strong> embeddings to align, and <strong>row</strong> embeddings to match &mdash; they must compose into a single end-to-end pipeline.</p>
+          <div class="component-icon uivision"><i class="fas fa-ruler-combined"></i></div>
+          <h3>Representation-level protocol</h3>
+          <p>Each model exports frozen row-, column-, or table-embeddings; shared lightweight heads (training-free, learned probes, or query-conditioned) read them out. Comparisons reflect the <strong>exported embedding</strong> under common readouts, not the choice of downstream predictor.</p>
         </div>
-        <div class="component-card featured">
-          <div class="component-icon groundcua"><i class="fas fa-puzzle-piece"></i></div>
-          <h3>Composition is non-additive</h3>
-          <p>The strongest pipelines are capability-matched <strong>hybrids</strong>, not single-encoder reuse &mdash; and per-stage marginal ranks do not determine the winning combination.</p>
+        <div class="component-card">
+          <div class="component-icon groundcua"><i class="fas fa-toolbox"></i></div>
+          <h3>A benchmark <em>and</em> a library</h3>
+          <p>Many wrapped models were never built to emit embeddings &mdash; in-context predictors (TabPFN, TabICL), table-QA/parsing models (TAPAS, TAPEX, TaBERT), and self-supervised learners (SAINT, SCARF, SubTab, VIME). One shared wrapper turns each into a reusable tabular embedding model.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pipeline Section -->
-  <section class="section" id="pipeline" style="background: rgba(47, 42, 107, 0.025);">
+  <!-- Three Suites Section -->
+  <section class="section" id="suites" style="background: rgba(47, 42, 107, 0.025);">
     <div class="container is-max-desktop">
-      <h2 class="section-title">The DLTE Pipeline</h2>
-      <p class="section-subtitle">Data-Lake Table Enrichment composes three embedding granularities into one end-to-end task. A pipeline may reuse a single multi-granular model or combine specialists across stages, making DLTE a composition test for the whole benchmark.</p>
+      <h2 class="section-title">Three Suites, Three Granularities</h2>
+      <p class="section-subtitle">TRL-Bench treats retrieval, schema alignment, linkage, prediction, and grounding as atomic capabilities, and measures them at the granularities where embeddings are actually reused &mdash; columns and tables, rows, and their composition.</p>
+
+      <div class="components-grid suites-grid">
+        <div class="component-card">
+          <div class="component-icon uivision"><i class="fas fa-table-columns"></i></div>
+          <h3>TRL-CTbench</h3>
+          <p class="suite-tag">Column &amp; table transfer &middot; 13 tasks</p>
+          <p>Eight column-level and five table-level tasks across <strong>schema understanding</strong>, <strong>joinability</strong>, <strong>unionability</strong>, and <strong>grounding</strong> (table QA &amp; retrieval). Twenty standardized column/table datasets; evaluated on the 10 of 20 models that natively expose column or table embeddings.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon groundcua"><i class="fas fa-link"></i></div>
+          <h3>TRL-Rbench</h3>
+          <p class="suite-tag">Row transfer &middot; prediction + linkage</p>
+          <p>Within-table <strong>row prediction</strong> over 50 OpenML-derived tables with 123 hand-verified targets (77 classification, 46 regression), and cross-table <strong>record linkage</strong> over 16 datasets, split into Clean and Robust linkage. Tests whether one row embedding transfers both within and across tables.</p>
+        </div>
+        <div class="component-card featured">
+          <div class="component-icon videocua"><i class="fas fa-water"></i></div>
+          <h3>TRL-DLTE</h3>
+          <p class="suite-tag">Compositional &middot; all three granularities</p>
+          <p>Multi-stage <strong>Data-Lake Table Enrichment</strong> over a <strong>47,772-table</strong> lake built from 1,379 parent tables. Retrieve with table embeddings, align columns with column embeddings, match rows with row embeddings &mdash; a single composition test for the whole benchmark.</p>
+        </div>
+      </div>
+
+      <!-- Construction figure -->
+      <div class="pipeline-section figure-wide" style="margin-top: 2.5rem;">
+        <img src="./static/images/data-construction.png" alt="Curation of TRL-Rbench row-prediction tables (158 candidate tables filtered to 50 tables with 123 targets) and assembly of the TRL-DLTE lake (1,379 TabFact/WTQ parents fragmented into seed queries and union/join targets; 11,032 targets embedded with 36,740 CKAN distractors into a 47,772-table lake)" class="pipeline-image">
+        <p class="pipeline-caption"><strong>Curated assets.</strong> (a)&nbsp;TRL-Rbench row-prediction curation: 158 candidate tables pass rule screening, degeneracy audit, and human review with label repair into <strong>50 tables with 123 targets</strong>. (b)&nbsp;TRL-DLTE lake assembly: 1,379 TabFact/WTQ parents are fragmented at four noise tiers; <strong>11,032 targets</strong> are embedded alongside <strong>36,740 CKAN distractors</strong> in a <strong>47,772-table</strong> lake (parent-disjoint splits).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRL-DLTE Pipeline Section -->
+  <section class="section" id="dlte">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Inside TRL-DLTE: Compositional Enrichment</h2>
+      <p class="section-subtitle">From a complete parent table we remove a block of rows (the <strong>union target</strong>) and a block of columns (the <strong>join target</strong>); the remainder is a <strong>seed query</strong>. Given only the seed and a data lake, a pipeline must recover both targets &mdash; composing table, column, and row embeddings across three stages.</p>
 
       <div class="pipeline-steps">
         <div class="pipeline-step">
@@ -252,93 +286,107 @@
           <div class="step-number">&starf;</div>
           <div class="step-content">
             <h4><i class="fas fa-trophy"></i> Scoring &mdash; UJ-H</h4>
-            <p>End-to-end union/join recall via <strong>UJ-H</strong> (their harmonic mean), with Cell&nbsp;F1 as a complementary cell-recovery diagnostic.</p>
+            <p>End-to-end union/join recall via <strong>UJ-H</strong> (their per-query harmonic mean), with Cell&nbsp;F1 as a complementary cell-recovery diagnostic.</p>
           </div>
         </div>
-      </div>
-
-      <!-- Protocol figure: the TRL-Bench pipeline across the three DLTE stages -->
-      <div class="pipeline-section figure-wide" style="margin-top: 2.5rem;">
-        <img src="./static/images/pipeline.png" alt="TRL-Bench protocol: data, encoders, embeddings, tasks, findings" class="pipeline-image">
-        <p class="pipeline-caption"><strong>The TRL-Bench protocol.</strong> Heterogeneous encoders are encoded once into row/column/table embeddings; shared probes evaluate them across CTbench, Rbench, and the compositional <strong>DLTE</strong> pipeline &mdash; Stage&nbsp;1 retrieval &rarr; Stage&nbsp;2 column alignment &rarr; Stage&nbsp;3 row matching.</p>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Demo Section -->
-  <section class="section" id="demo">
+  <!-- Demo Section: chromeless auto-looping viewer (no controls) -->
+  <section class="section" id="demo" style="background: rgba(109, 75, 196, 0.04);">
     <div class="container is-max-desktop">
-      <h2 class="section-title">Interactive Demo</h2>
-      <p class="section-subtitle">Explore the full landscape of <strong>1,120</strong> DLTE pipelines in 3D &mdash; every Stage-1 &times; Stage-2 &times; Stage-3 combination, colored by end-to-end UJ-H.</p>
+      <h2 class="section-title">Demo</h2>
+      <p class="section-subtitle">A hands-off fly-through of the <strong>1,120</strong> TRL-DLTE pipelines &mdash; every Stage-1 &times; Stage-2 &times; Stage-3 combination, colored by end-to-end UJ-H. The cube auto-tours on loop; no controls to fiddle with.</p>
 
       <div class="demo-wrap">
-        <iframe class="demo-frame" src="viewer/dlte_voxel.html" title="DLTE voxel viewer" loading="lazy" allowfullscreen></iframe>
+        <iframe class="demo-frame" src="viewer/dlte_voxel.html?embed=1" title="TRL-DLTE voxel auto-tour" loading="lazy"></iframe>
       </div>
-
-      <div class="demo-actions">
-        <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener" class="button is-accent">
-          <span class="icon"><i class="fas fa-up-right-from-square"></i></span>
-          <span>Open fullscreen</span>
-        </a>
-      </div>
-
-      <p class="demo-hint"><i class="fas fa-circle-info"></i> Click the cube to interact &mdash; drag to look, scroll to zoom, WASD to fly. The three axes are Stage&nbsp;1 (table) &times; Stage&nbsp;2 (column) &times; Stage&nbsp;3 (row) models.</p>
     </div>
   </section>
 
   <!-- Findings Section -->
-  <section class="section" id="findings" style="background: rgba(109, 75, 196, 0.04);">
+  <section class="section" id="findings">
     <div class="container is-max-desktop">
       <h2 class="section-title">Key Findings</h2>
-      <p class="section-subtitle">Once downstream conditions are standardized, encoder quality is capability-specific &mdash; and end-to-end quality depends on how stages compose, not on per-stage rank in isolation.</p>
+      <p class="section-subtitle">Once downstream conditions are standardized, encoder quality is <strong>capability-specific</strong> rather than captured by a single leaderboard &mdash; and end-to-end quality depends on how capabilities compose, not on per-stage rank in isolation.</p>
 
       <div class="videocua-hero">
         <div class="vcua-stat-big">
-          <div class="vcua-number">1,120</div>
-          <div class="vcua-desc">pipelines &mdash; every Stage-1&times;2&times;3 combination</div>
+          <div class="vcua-number">20</div>
+          <div class="vcua-desc">encoders &mdash; no single universal winner</div>
         </div>
         <div class="vcua-divider"></div>
         <div class="vcua-stat-big">
-          <div class="vcua-number">0.229<span class="vcua-unit">UJ-H</span></div>
-          <div class="vcua-desc">best hybrid vs 0.139 monolith</div>
+          <div class="vcua-number">0.139&rarr;0.229<span class="vcua-unit">UJ-H</span></div>
+          <div class="vcua-desc">hybrids beat the best monolith</div>
         </div>
         <div class="vcua-divider"></div>
         <div class="vcua-stat-big">
           <div class="vcua-number">0.80<span class="vcua-unit">&rho;</span></div>
-          <div class="vcua-desc">Stage-3 &harr; record linkage (p=6.3e-4)</div>
+          <div class="vcua-desc">row identity transfers across suites (p=6.3e-4)</div>
         </div>
       </div>
 
       <div class="frontiers-grid">
         <div class="frontier-card">
+          <div class="frontier-icon"><i class="fas fa-chart-pie"></i></div>
+          <h4>No universal encoder</h4>
+          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT). Quality is capability-specific, not one leaderboard.</p>
+        </div>
+        <div class="frontier-card">
           <div class="frontier-icon"><i class="fas fa-puzzle-piece"></i></div>
-          <h4>Hybrids beat monoliths</h4>
-          <p>The best dev-selected pipeline, <strong>TUTA/GTE/GTE</strong>, reaches 0.229 UJ-H &mdash; 0.090 above the best monolithic <strong>BERT/BERT/BERT</strong> (0.139). The strongest pipelines combine capability-matched specialists rather than reuse a single encoder.</p>
+          <h4>Stacking winners &ne; best pipeline</h4>
+          <p>In <strong>TRL-DLTE</strong>, the best dev-selected hybrid <strong>TUTA/GTE/GTE</strong> reaches 0.229 UJ-H &mdash; 0.090 above the best monolithic <strong>BERT/BERT/BERT</strong> (0.139). Per-stage marginal leaders assemble to just 0.134. Composition is non-additive: capability-matched hybrids win.</p>
         </div>
         <div class="frontier-card">
           <div class="frontier-icon"><i class="fas fa-shuffle"></i></div>
-          <h4>Marginals mislead</h4>
-          <p>Per-stage marginal leaders assemble to just 0.134 (test) / 0.231 (dev) &mdash; a 0.097 swing. TABBIE leads the Stage-2 marginal yet never enters the top-50, where GTE and TURL dominate. Composition is non-additive.</p>
-        </div>
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-link"></i></div>
-          <h4>Identity resolution transfers</h4>
-          <p>DLTE Stage-3 row-matching rankings agree with atomic Record Linkage at Spearman |&rho;|=0.80 (p=6.3&times;10<sup>&minus;4</sup>), led by GTE and TransTab &mdash; a shared identity-resolution capability that persists across all four noise tiers.</p>
+          <h4>Row signal is not monolithic</h4>
+          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
         </div>
       </div>
 
-      <!-- Scatter figure -->
-      <div class="pipeline-section" style="margin-top: 2.5rem; max-width: 840px; margin-left: auto; margin-right: auto;">
-        <img src="./static/images/scatter_cf1_ujh.png" alt="Cell F1 versus UJ-H scatter for all 1,120 DLTE pipelines, colored by Stage-2 model" class="pipeline-image">
-        <p class="pipeline-caption"><strong>Cell&nbsp;F1 vs. UJ-H across all 1,120 pipelines</strong> (test set; color = Stage-2 model, diamonds = monolithic). Capability-matched hybrids (e.g. Starmie/GTE/GTE, 0.253) sit well above single-encoder reuse, while the per-stage marginal assembly (Starmie/TABBIE/TransTab, 0.134) is far from the frontier.</p>
+      <!-- Capability radar figure -->
+      <div class="pipeline-section" style="margin-top: 2.5rem; max-width: 760px; margin-left: auto; margin-right: auto;">
+        <img src="./static/images/capability-radar.png" alt="Radar chart in which different tabular encoder families spike on different capability axes, illustrating that no single model dominates across capabilities" class="pipeline-image">
+        <p class="pipeline-caption"><strong>No model spans every capability.</strong> Different encoder families peak on different capability axes &mdash; surface-text tasks reward generic text encoders, while cross-table alignment and matching reward structure-aware specialists.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Results Section -->
-  <section class="section" id="results" style="background: rgba(47, 42, 107, 0.025);">
-    <div class="container is-max-desktop">
-      <h2 class="section-title">Representative Pipelines</h2>
+      <!-- Leaders by capability (all three suites) -->
+      <h3 class="subsection-title" style="margin-top: 3rem;">Leaders by capability</h3>
+      <p class="section-subtitle">No single encoder leads everywhere &mdash; the strongest model differs by suite and by capability.</p>
+      <div class="components-grid leaders-grid">
+        <div class="component-card">
+          <div class="component-icon uivision"><i class="fas fa-table-columns"></i></div>
+          <h3>TRL-CTbench</h3>
+          <ul class="leader-list">
+            <li><strong>Starmie</strong> &mdash; Union Search, 0.662 MAP</li>
+            <li><strong>Starmie</strong> &mdash; Schema Matching, 0.764 R@GT</li>
+            <li><strong>TaBERT</strong> &mdash; best Grounding, 0.198 NR&nbsp;&darr;</li>
+          </ul>
+        </div>
+        <div class="component-card">
+          <div class="component-icon groundcua"><i class="fas fa-link"></i></div>
+          <h3>TRL-Rbench</h3>
+          <ul class="leader-list">
+            <li><strong>TabICL</strong> &mdash; Row Prediction, 0.816 AUROC</li>
+            <li><strong>BERT</strong> &mdash; Clean Linkage, 0.418 F1</li>
+            <li><strong>GTE</strong> &mdash; Robust Linkage, best NR&nbsp;&darr;</li>
+          </ul>
+        </div>
+        <div class="component-card">
+          <div class="component-icon videocua"><i class="fas fa-water"></i></div>
+          <h3>TRL-DLTE</h3>
+          <ul class="leader-list">
+            <li><strong>TUTA/GTE/GTE</strong> &mdash; 0.229 UJ-H (headline)</li>
+            <li><strong>Starmie/GTE/GTE</strong> &mdash; 0.253 UJ-H (test best)</li>
+            <li><strong>BERT/BERT/BERT</strong> &mdash; 0.139 (best monolith)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Representative DLTE pipelines -->
+      <h3 class="subsection-title" style="margin-top: 3rem;">Representative TRL-DLTE pipelines</h3>
       <p class="section-subtitle">End-to-end DLTE scores (UJ-H, higher is better). Headline pipelines are selected on the development split and evaluated once on test to avoid selection bias over 1,120 test evaluations.</p>
 
       <div class="comparison-section">
@@ -388,11 +436,16 @@
         </div>
         <p class="results-note">UJ-H is the harmonic mean of union- and join-recall. The dev-selected headline hybrid scores <strong>0.229</strong> (0.090 above the best monolith); the unrestricted test maximum is 0.253 (Starmie/GTE/GTE). Explore all 1,120 pipelines in the <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">interactive viewer &rarr;</a></p>
       </div>
+
+      <!-- Three gaps -->
+      <p style="text-align: center; margin-top: 2.5rem; font-size: 0.95rem; color: var(--text-secondary); max-width: 820px; margin-left: auto; margin-right: auto;">
+        Read jointly, the three suites expose three structural gaps that single-paradigm evaluations cannot isolate: a <strong>specialization gap</strong> in model choice (CTbench), a <strong>transfer-scope gap</strong> between intra- and cross-table transfer (Rbench), and a <strong>composition gap</strong> where granularities interact rather than stack (DLTE).
+      </p>
     </div>
   </section>
 
   <!-- Citation Section -->
-  <section class="section" id="citation">
+  <section class="section" id="citation" style="background: rgba(47, 42, 107, 0.025);">
     <div class="container is-max-desktop">
       <h2 class="section-title">Citation</h2>
       <p class="section-subtitle">If you find TRL-Bench useful for your research, please cite our work.</p>
@@ -412,7 +465,7 @@
       </div>
 
       <p style="text-align: center; margin-top: 1.5rem; font-size: 0.92rem; color: var(--text-secondary);">
-        TRL-DLTE is the compositional suite of <strong>TRL-Bench</strong>, alongside <strong>TRL-CTbench</strong> (column/table) and <strong>TRL-Rbench</strong> (row).
+        TRL-Bench spans three suites &mdash; <strong>TRL-CTbench</strong> (column/table), <strong>TRL-Rbench</strong> (row), and <strong>TRL-DLTE</strong> (compositional data-lake table enrichment).
       </p>
     </div>
   </section>
@@ -423,7 +476,8 @@
     <p style="margin-top: 0.5rem;">
       <a href="https://arxiv.org/abs/2606.09323" target="_blank" rel="noopener">Paper</a> &middot;
       <a href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener">Code</a> &middot;
-      <a href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener">Data</a> &middot;
+      <a href="https://huggingface.co/logo-lab" target="_blank" rel="noopener">Data</a> &middot;
+      <a href="https://huggingface.co/papers/2606.09323" target="_blank" rel="noopener">Hugging Face</a> &middot;
       <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">Interactive Viewer</a>
     </p>
     <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.7;">Page template adapted from cua-suite / Nerfies.</p>

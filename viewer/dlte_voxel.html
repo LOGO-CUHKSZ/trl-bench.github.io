@@ -507,6 +507,23 @@
     font-weight: 500;
   }
   body.paper-shot-mode #tour-subtitle { display: none !important; }
+
+  /* ---- Embed mode: chromeless, auto-looping demo (?embed in URL) ----
+     Hide every control / settings panel so the landing-page demo shows
+     only the 3D cube and the auto-tour narration. Set by initEmbedMode().
+     The tour subtitle is intentionally kept (unlike paper-shot mode). */
+  body.embed-mode #filter-panel-container,
+  body.embed-mode #topbar,
+  body.embed-mode #help-modal,
+  body.embed-mode #controls,
+  body.embed-mode #voxel-tooltip,
+  body.embed-mode #sprite-editor,
+  body.embed-mode #axis-legend,
+  body.embed-mode #task-panel,
+  body.embed-mode #model-metacard,
+  body.embed-mode #model-drawer-container,
+  body.embed-mode #champion-banner,
+  body.embed-mode #mini-map { display: none !important; }
 </style>
 </head>
 <body>
@@ -11218,6 +11235,31 @@ if (miniMapInput) {
       }
     } catch (e) { console.warn('visual hook failed:', e); }
   };
+})();
+
+/* ===== Embed mode: chromeless, auto-looping demo ======================
+   When the viewer is loaded with ?embed in the query string (used by the
+   landing-page demo iframe), hide all chrome via body.embed-mode and loop
+   the auto-tour, so the section shows a clean, hands-off animation with no
+   control panels. Inert for normal (non-embed) loads. */
+(function initEmbedMode() {
+  let isEmbed = false;
+  try { isEmbed = new URLSearchParams(location.search).has('embed'); }
+  catch (_) { /* no URL API -> stay a normal interactive viewer */ }
+  if (!isEmbed) return;
+  document.body.classList.add('embed-mode');
+  async function _embedLoop() {
+    // Let the scene / labels settle before the first fly.
+    await new Promise(r => setTimeout(r, 700));
+    for (;;) {
+      // startAutoTour() resolves once a full tour completes and restores.
+      try { await startAutoTour(); }
+      catch (_) { /* keep the demo alive across any per-tour hiccup */ }
+      await new Promise(r => setTimeout(r, 1200)); // brief pause, then loop
+    }
+  }
+  if (document.readyState === 'complete') _embedLoop();
+  else window.addEventListener('load', _embedLoop, { once: true });
 })();</script>
 <div id="model-drawer-container"></div>
 </body>

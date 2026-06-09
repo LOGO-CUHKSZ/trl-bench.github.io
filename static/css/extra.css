@@ -87,3 +87,39 @@
 }
 .results-note a { color: var(--teal); font-weight: 600; text-decoration: none; }
 .results-note a:hover { text-decoration: underline; }
+
+/* ---- Three Suites section ---- */
+.component-card p.suite-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+/* Repurpose the featured badge for the compositional (DLTE) suite card */
+.suites-grid .component-card.featured::before { content: 'Compositional'; }
+
+/* ---- Findings subsection heading ---- */
+.subsection-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* ---- Findings: leaders-by-capability strip ---- */
+.leaders-grid { margin-top: 1.5rem; }
+.leaders-grid .component-card { padding: 1.5rem 1.25rem; }
+.leader-list { list-style: none; margin: 0; padding: 0; }
+.leader-list li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 1.4;
+}
+.leader-list li:last-child { border-bottom: none; }
+.leader-list strong { color: var(--text-primary); }
