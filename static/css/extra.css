@@ -3,9 +3,19 @@
    (index.css is the recolored cua-suite stylesheet)
    ============================================================ */
 
-/* ---- Logo cube (inline SVG) ---- */
-.logo-cube { display: block; }
-.navbar-brand .logo-cube { width: 26px; height: 26px; }
+/* ---- Logo mark (inline tri-grid SVG: table with a highlighted row x column x cell) ---- */
+.logo-mark { display: block; }
+.navbar-brand .logo-mark {
+  width: 26px; height: 26px;
+  overflow: visible;          /* let the rounded square's corners show while spinning */
+  transform-origin: 50% 50%;
+}
+/* Hover the brand -> the logo spins clockwise, continuously, until the mouse leaves. */
+.navbar-brand:hover .logo-mark { animation: trl-logo-spin 1.8s linear infinite; }
+@keyframes trl-logo-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .navbar-brand:hover .logo-mark { animation: none; }
+}
 
 /* ---- Hero eyebrow ---- */
 .hero-eyebrow {
