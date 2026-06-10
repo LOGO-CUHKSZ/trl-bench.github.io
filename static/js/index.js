@@ -223,3 +223,25 @@ function copyBibtex() {
     cube.remove();
   });
 })();
+
+// ---- Hero cursor glow: lights up the grid backdrop under the pointer ----
+(function () {
+  const hero = document.querySelector('.hero');
+  const heroBg = document.querySelector('.hero-bg');
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!hero || !heroBg || !fine || reduce) return;
+
+  const glow = document.createElement('span');
+  glow.className = 'hero-glow';
+  glow.setAttribute('aria-hidden', 'true');
+  heroBg.appendChild(glow);
+
+  hero.addEventListener('mousemove', function (e) {
+    const r = hero.getBoundingClientRect();
+    glow.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+    glow.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+  hero.addEventListener('mouseenter', () => glow.classList.add('on'));
+  hero.addEventListener('mouseleave', () => glow.classList.remove('on'));
+})();
