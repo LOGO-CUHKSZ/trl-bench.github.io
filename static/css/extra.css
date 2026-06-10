@@ -246,3 +246,96 @@
   .content-nav .nav-item.nav-cta { animation: none; box-shadow: 0 2px 12px rgba(109, 75, 196, 0.5); }
   .content-nav .nav-item.nav-cta::after { display: none; }
 }
+
+/* ============================================================
+   Eye-candy layer: hero animated backdrop, scroll hint,
+   scroll-reveal + stat count-up (driven by static/js/index.js)
+   ============================================================ */
+
+/* ---- Hero backdrop: a slowly drifting table grid + floating "cells" ---- */
+.hero { overflow: hidden; }
+.hero .container { position: relative; z-index: 1; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.hero-bg-grid {
+  position: absolute;
+  inset: -56px;                                  /* covers the one-tile pan loop */
+  background-image:
+    linear-gradient(rgba(109, 75, 196, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 75, 196, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 30%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 30%, #000 35%, transparent 78%);
+  animation: hero-grid-pan 64s linear infinite;
+}
+@keyframes hero-grid-pan { to { transform: translate(44px, 44px); } }
+
+/* Floating cells echo the logo palette: purple / blue / amber */
+.hero-cell {
+  position: absolute;
+  border-radius: 7px;
+  background: rgba(109, 75, 196, 0.08);
+  border: 1px solid rgba(109, 75, 196, 0.12);
+  animation: hero-cell-float ease-in-out infinite alternate;
+}
+.hero-cell.blue  { background: rgba(47, 111, 208, 0.08); border-color: rgba(47, 111, 208, 0.13); }
+.hero-cell.amber { background: rgba(245, 158, 11, 0.10); border-color: rgba(245, 158, 11, 0.16); }
+.hero-cell.c1 { width: 34px; height: 34px; top: 12%; left: 5%;    animation-duration: 9s; }
+.hero-cell.c2 { width: 20px; height: 20px; top: 38%; left: 9%;    animation-duration: 12s;   animation-delay: -3s; }
+.hero-cell.c3 { width: 26px; height: 26px; top: 68%; left: 4.5%;  animation-duration: 10s;   animation-delay: -6s; }
+.hero-cell.c4 { width: 38px; height: 38px; top: 16%; right: 5%;   animation-duration: 11s;   animation-delay: -2s; }
+.hero-cell.c5 { width: 18px; height: 18px; top: 47%; right: 9%;   animation-duration: 8s;    animation-delay: -5s; }
+.hero-cell.c6 { width: 28px; height: 28px; top: 74%; right: 4%;   animation-duration: 13s;   animation-delay: -8s; }
+.hero-cell.c7 { width: 14px; height: 14px; top: 30%; left: 13%;   animation-duration: 10.5s; animation-delay: -1.5s; }
+@keyframes hero-cell-float {
+  from { transform: translateY(7px)  rotate(-2deg); }
+  to   { transform: translateY(-9px) rotate(3deg); }
+}
+@media (max-width: 900px) { .hero-cell { display: none; } }  /* side gutters vanish on narrow screens */
+
+/* ---- Scroll hint: bobbing chevron chip, fades once the reader scrolls ---- */
+.hero-scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 1.1rem;
+  z-index: 60;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--teal);
+  font-size: 1rem;
+  border: 1px solid rgba(109, 75, 196, 0.25);
+  box-shadow: 0 4px 16px rgba(47, 42, 107, 0.18);
+  transform: translateX(-50%);
+  animation: hint-bob 1.7s ease-in-out infinite;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.hero-scroll-hint:hover { color: #fff; background: var(--teal); }
+.hero-scroll-hint.hint-hidden { opacity: 0; visibility: hidden; }
+@keyframes hint-bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-7px); }
+}
+@media (max-width: 768px) { .hero-scroll-hint { display: none; } }
+
+/* ---- Scroll-reveal (classes added by JS; without JS nothing is ever hidden) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.reveal-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-grid, .hero-cell, .hero-scroll-hint { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+@media print {
+  .hero-scroll-hint { display: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

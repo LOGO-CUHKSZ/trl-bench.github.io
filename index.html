@@ -72,6 +72,17 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <!-- Animated backdrop: drifting table grid + floating cells (decorative) -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-grid"></div>
+      <span class="hero-cell c1"></span>
+      <span class="hero-cell c2 blue"></span>
+      <span class="hero-cell c3"></span>
+      <span class="hero-cell c4 amber"></span>
+      <span class="hero-cell c5"></span>
+      <span class="hero-cell c6 blue"></span>
+      <span class="hero-cell c7"></span>
+    </div>
     <div class="container is-max-desktop">
       <div class="hero-content">
         <div class="logo-container">
@@ -151,6 +162,11 @@
         </div>
       </div>
     </div>
+
+    <!-- Scroll hint: fades away once the reader starts exploring -->
+    <a class="hero-scroll-hint" href="#overview" aria-label="Scroll down to explore">
+      <i class="fas fa-chevron-down"></i>
+    </a>
   </section>
 
   <!-- Content Navigation -->
