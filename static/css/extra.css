@@ -339,3 +339,42 @@
   .hero-scroll-hint { display: none; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ---- DLTE pipeline: a signal cascades through the four stages (1 -> 2 -> 3 -> star) ---- */
+.pipeline-steps .step-number { position: relative; }
+.pipeline-steps .step-number::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+  opacity: 0;
+  pointer-events: none;
+  animation: step-ping 5.6s ease-out infinite;     /* 4 slots x 1.4s */
+}
+.pipeline-steps .pipeline-step:nth-child(2) .step-number::after { animation-delay: 1.4s; }
+.pipeline-steps .pipeline-step:nth-child(3) .step-number::after { animation-delay: 2.8s; }
+.pipeline-steps .pipeline-step:nth-child(4) .step-number::after { animation-delay: 4.2s; border-color: #f59e0b; }
+@keyframes step-ping {
+  0%   { transform: scale(0.75); opacity: 0.9; }
+  20%  { transform: scale(2.0);  opacity: 0; }
+  100% { transform: scale(2.0);  opacity: 0; }
+}
+
+/* The card itself glows briefly while its stage is "active" */
+.pipeline-steps .pipeline-step { animation: step-active 5.6s ease-in-out infinite; }
+.pipeline-steps .pipeline-step:nth-child(2) { animation-delay: 1.4s; }
+.pipeline-steps .pipeline-step:nth-child(3) { animation-delay: 2.8s; }
+.pipeline-steps .pipeline-step:nth-child(4) { animation-delay: 4.2s; animation-name: step-active-amber; }
+@keyframes step-active {
+  0%, 20%, 100% { border-color: rgba(0, 0, 0, 0.06); box-shadow: var(--shadow-sm); }
+  8%            { border-color: rgba(109, 75, 196, 0.45); box-shadow: 0 6px 22px rgba(109, 75, 196, 0.22); }
+}
+@keyframes step-active-amber {
+  0%, 20%, 100% { border-color: rgba(0, 0, 0, 0.06); box-shadow: var(--shadow-sm); }
+  8%            { border-color: rgba(245, 158, 11, 0.55); box-shadow: 0 6px 22px rgba(245, 158, 11, 0.22); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pipeline-steps .pipeline-step,
+  .pipeline-steps .step-number::after { animation: none; }
+}
