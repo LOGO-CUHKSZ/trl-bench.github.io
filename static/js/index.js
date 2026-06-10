@@ -34,12 +34,34 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Copy BibTeX
+// Copy BibTeX (with a little celebratory burst of "table cells")
+function cellConfetti(anchor) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const rect = anchor.getBoundingClientRect();
+  const colors = ['#6d4bc4', '#8a63e0', '#2f6fd0', '#f59e0b'];
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('span');
+    s.className = 'cell-confetti';
+    const size = 5 + Math.random() * 6;
+    s.style.cssText =
+      'left:' + (rect.left + rect.width / 2) + 'px;' +
+      'top:' + (rect.top + rect.height / 2) + 'px;' +
+      'width:' + size + 'px;height:' + size + 'px;' +
+      'background:' + colors[i % colors.length] + ';' +
+      '--dx:' + ((Math.random() * 2 - 1) * 150).toFixed(0) + 'px;' +
+      '--dy:' + (-(50 + Math.random() * 120)).toFixed(0) + 'px;' +
+      '--rot:' + ((Math.random() * 2 - 1) * 540).toFixed(0) + 'deg;';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1300);
+  }
+}
+
 function copyBibtex() {
   const text = document.querySelector('.citation-box pre').textContent;
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.querySelector('.copy-btn');
     btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    cellConfetti(btn);
     setTimeout(() => {
       btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
     }, 2000);
@@ -131,4 +153,73 @@ function copyBibtex() {
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+})();
+
+// ---- Widgets: figure lightbox + floating mini voxel cube ----
+(function () {
+  // Lightbox: click a large figure to inspect it full screen
+  const zoomables = document.querySelectorAll('.hero-teaser, .pipeline-image');
+  if (zoomables.length) {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-label', 'Image viewer');
+    box.innerHTML = '<img alt=""><p class="lightbox-caption"></p><p class="lightbox-hint">Click anywhere or press Esc to close</p>';
+    document.body.appendChild(box);
+    const big = box.querySelector('img');
+    const cap = box.querySelector('.lightbox-caption');
+    const close = () => {
+      box.classList.remove('open');
+      document.documentElement.style.overflow = '';
+    };
+    zoomables.forEach(img => {
+      img.classList.add('zoomable');
+      img.addEventListener('click', () => {
+        big.src = img.src;
+        big.alt = img.alt || '';
+        cap.textContent = img.alt || '';
+        box.classList.add('open');
+        document.documentElement.style.overflow = 'hidden';
+      });
+    });
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+  }
+
+  // Mini voxel cube: shows once the reader is past the hero, hides at the demo
+  const cube = document.getElementById('miniCube');
+  if (!cube) return;
+  let dismissed = false;
+  try { dismissed = sessionStorage.getItem('cubeDismissed') === '1'; } catch (e) { /* file:// quirks */ }
+  if (dismissed) { cube.remove(); return; }
+
+  let heroInView = true;
+  let demoInView = false;
+  const update = () => cube.classList.toggle('cube-hidden', heroInView || demoInView);
+  if ('IntersectionObserver' in window) {
+    const hero = document.querySelector('.hero');
+    const demo = document.querySelector('#demo');
+    if (hero) new IntersectionObserver(es => { heroInView = es[0].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
+    if (demo) new IntersectionObserver(es => { demoInView = es[0].isIntersecting; update(); }, { threshold: 0.15 }).observe(demo);
+  } else {
+    heroInView = false; // no observer: just show it
+  }
+  update();
+
+  cube.querySelector('.mini-cube-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector('#demo');
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 120;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+  cube.querySelector('.mini-cube-close').addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    try { sessionStorage.setItem('cubeDismissed', '1'); } catch (err) { /* ignore */ }
+    cube.remove();
+  });
 })();

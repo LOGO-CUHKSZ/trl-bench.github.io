@@ -378,3 +378,178 @@
   .pipeline-steps .pipeline-step,
   .pipeline-steps .step-number::after { animation: none; }
 }
+
+/* ---- Hero title: flowing gradient across the whole title + a bright sweeping band ---- */
+.publication-title.title-shine {
+  background: linear-gradient(105deg,
+    #2f2a6b 0%,
+    #6d4bc4 18%,
+    #2f6fd0 36%,
+    #cdbcf9 50%,   /* the bright glint that sweeps through */
+    #2f6fd0 64%,
+    #6d4bc4 82%,
+    #2f2a6b 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: title-flow 5s linear infinite;
+}
+@keyframes title-flow {
+  from { background-position: 100% 0; }   /* glint enters left ... */
+  to   { background-position: 0% 0; }     /* ... and exits right */
+}
+
+/* ---- Lightbox: click any large figure to inspect it full screen ---- */
+.zoomable { cursor: zoom-in; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2rem;
+  background: rgba(24, 20, 54, 0.93);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  cursor: zoom-out;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox img {
+  max-width: 94vw;
+  max-height: 84vh;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+.lightbox-caption {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 920px;
+}
+.lightbox-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* ---- Floating mini voxel cube (jump-to-demo widget) ---- */
+.mini-cube-widget {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
+}
+.mini-cube-widget.cube-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+.mini-cube-link { display: block; text-decoration: none; }
+.mini-cube-scene {
+  display: block;
+  width: 58px;
+  height: 58px;
+  perspective: 240px;
+  filter: drop-shadow(0 6px 16px rgba(47, 42, 107, 0.35));
+}
+.mini-cube {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: cube-spin 10s linear infinite;
+}
+.mini-cube-widget:hover .mini-cube { animation-duration: 3.5s; }   /* spins up on hover */
+.mini-cube .face {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  /* 3x3 voxel grid lines on every face */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.38) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.38) 1.5px, transparent 1.5px);
+  background-size: calc(100% / 3) calc(100% / 3);
+}
+.mini-cube .f-front  { background-color: #8a63e0; transform: rotateY(0deg)    translateZ(29px); }
+.mini-cube .f-back   { background-color: #5b3fa8; transform: rotateY(180deg)  translateZ(29px); }
+.mini-cube .f-right  { background-color: #6d4bc4; transform: rotateY(90deg)   translateZ(29px); }
+.mini-cube .f-left   { background-color: #6d4bc4; transform: rotateY(-90deg)  translateZ(29px); }
+.mini-cube .f-top    { background-color: #9d7bf0; transform: rotateX(90deg)   translateZ(29px); }
+.mini-cube .f-bottom { background-color: #5b3fa8; transform: rotateX(-90deg)  translateZ(29px); }
+@keyframes cube-spin {
+  from { transform: rotateX(-22deg) rotateY(0deg); }
+  to   { transform: rotateX(-22deg) rotateY(360deg); }
+}
+.mini-cube-tip {
+  background: #fff;
+  color: var(--teal);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(109, 75, 196, 0.25);
+  box-shadow: 0 4px 14px rgba(47, 42, 107, 0.16);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.mini-cube-widget:hover .mini-cube-tip { opacity: 1; transform: translateX(0); }
+.mini-cube-close {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(109, 75, 196, 0.3);
+  background: #fff;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.mini-cube-widget:hover .mini-cube-close { opacity: 1; }
+.mini-cube-close:hover { color: var(--teal); }
+@media (max-width: 768px) { .mini-cube-widget { display: none; } }
+
+/* ---- BibTeX copy: a tiny burst of "table cells" ---- */
+.cell-confetti {
+  position: fixed;
+  z-index: 110;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: confetti-pop 1.25s cubic-bezier(0.16, 0.66, 0.35, 1) forwards;
+}
+@keyframes confetti-pop {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  45%  { transform: translate(calc(var(--dx) * 0.6), var(--dy)) rotate(calc(var(--rot) * 0.5)); opacity: 1; }
+  100% { transform: translate(var(--dx), calc(var(--dy) + 220px)) rotate(var(--rot)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publication-title.title-shine { animation: none; background-position: 50% 0; }  /* static, glint centered */
+  .mini-cube { animation: none; transform: rotateX(-22deg) rotateY(35deg); }
+  .cell-confetti { display: none; }
+}
+@media print {
+  .mini-cube-widget, .lightbox { display: none; }
+}
