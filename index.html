@@ -162,7 +162,7 @@
         <a href="#ctbench" class="nav-item">CTbench</a>
         <a href="#rbench" class="nav-item">Rbench</a>
         <a href="#dlte" class="nav-item">TRL-DLTE</a>
-        <a href="#demo" class="nav-item">Demo</a>
+        <a href="#demo" class="nav-item nav-cta">Demo</a>
         <a href="#findings" class="nav-item">Findings</a>
         <a href="#citation" class="nav-item">Citation</a>
       </nav>
@@ -421,8 +421,10 @@
             </tbody>
           </table>
         </div>
-        <p class="results-note">UJ-H is the harmonic mean of union- and join-recall. The dev-selected headline hybrid scores <strong>0.229</strong> (0.090 above the best monolith); the unrestricted test maximum is 0.253 (Starmie/GTE/GTE). Explore all 1,120 pipelines in the <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">interactive viewer &rarr;</a></p>
+        <p class="results-note">UJ-H is the harmonic mean of union- and join-recall. Explore all 1,120 pipelines in the <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">interactive viewer &rarr;</a></p>
       </div>
+
+      <p class="results-note"><strong>Composition gap.</strong> Stacking per-stage winners is not the best pipeline: the dev-selected hybrid <strong>TUTA/GTE/GTE</strong> (0.229 UJ-H) beats the best monolith <strong>BERT/BERT/BERT</strong> (0.139) by 0.090, while assembling each stage's marginal leader reaches only 0.134; the unrestricted test maximum is 0.253 (Starmie/GTE/GTE). Granularities interact rather than stack &mdash; capability-matched hybrids win.</p>
 
     </div>
   </section>
@@ -459,24 +461,6 @@
         <div class="vcua-stat-big">
           <div class="vcua-number">0.80<span class="vcua-unit">&rho;</span></div>
           <div class="vcua-desc">row identity transfers across suites (p=6.3e-4)</div>
-        </div>
-      </div>
-
-      <div class="frontiers-grid">
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-chart-pie"></i></div>
-          <h4>No universal encoder</h4>
-          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT), and TaBERT leads Grounding (0.198 NR&nbsp;&darr;). Quality is capability-specific, not one leaderboard.</p>
-        </div>
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-puzzle-piece"></i></div>
-          <h4>Stacking winners &ne; best pipeline</h4>
-          <p>In <strong>TRL-DLTE</strong>, the best dev-selected hybrid <strong>TUTA/GTE/GTE</strong> reaches 0.229 UJ-H &mdash; 0.090 above the best monolithic <strong>BERT/BERT/BERT</strong> (0.139). Per-stage marginal leaders assemble to just 0.134. Composition is non-additive: capability-matched hybrids win.</p>
-        </div>
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-shuffle"></i></div>
-          <h4>Row signal is not monolithic</h4>
-          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, 0.418 F1; GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
         </div>
       </div>
 

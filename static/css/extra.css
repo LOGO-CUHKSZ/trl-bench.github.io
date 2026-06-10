@@ -170,10 +170,16 @@
 
 /* ---- Hero datasets link row (3 direct dataset links) ---- */
 .hero-datasets {
+  display: table;                 /* shrink-to-fit box, centered via margin auto */
+  margin: 1.2rem auto 0;
+  max-width: 100%;
   text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-top: 0.9rem;
+  font-size: 0.95rem;             /* was 0.85 — too small to notice */
+  color: var(--text-primary);
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(109, 75, 196, 0.22);
+  border-radius: 10px;
+  background: rgba(109, 75, 196, 0.05);
 }
 .hero-datasets i { color: var(--teal); margin-right: 0.3rem; }
 .hero-datasets a { color: var(--teal); font-weight: 600; text-decoration: none; }
@@ -186,5 +192,35 @@
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* ---- Inside-Rbench: centered 2-up (2 cards — avoid the stranded 3rd column) ---- */
+@media (min-width: 720px) {
+  #rbench .components-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 840px;          /* same card width as the CTbench 2x2 above */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ---- Demo nav pill: glowing call-to-action so it invites a click ---- */
+.content-nav .nav-item.nav-cta {
+  color: var(--teal);
+  font-weight: 700;
+  background: rgba(109, 75, 196, 0.10);
+  box-shadow: 0 0 0 0 rgba(109, 75, 196, 0.0);
+  animation: nav-cta-glow 1.9s ease-in-out infinite;
+}
+.content-nav .nav-item.nav-cta:hover { background: rgba(109, 75, 196, 0.16); }
+@keyframes nav-cta-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(109, 75, 196, 0.0); }
+  50%      { box-shadow: 0 0 13px 2px rgba(109, 75, 196, 0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .content-nav .nav-item.nav-cta {
+    animation: none;
+    box-shadow: 0 0 10px 1px rgba(109, 75, 196, 0.45);
   }
 }
