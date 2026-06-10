@@ -54,10 +54,17 @@
             <span class="icon"><i class="fab fa-github"></i></span>
             <span>Code</span>
           </a>
-          <a class="navbar-item" href="https://huggingface.co/logo-lab" target="_blank" rel="noopener">
-            <span class="icon"><i class="fas fa-database"></i></span>
-            <span>Data</span>
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="#suites">
+              <span class="icon"><i class="fas fa-database"></i></span>
+              <span>Data</span>
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://huggingface.co/datasets/logo-lab/trl-ctbench" target="_blank" rel="noopener">TRL-CTbench</a>
+              <a class="navbar-item" href="https://huggingface.co/datasets/logo-lab/trl-rbench" target="_blank" rel="noopener">TRL-Rbench</a>
+              <a class="navbar-item" href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener">TRL-DLTE</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -88,19 +95,19 @@
         <!-- Authors: directly under the title -->
         <div class="publication-authors">
           <div class="author-list">
-            <span class="author-block lead-author">Wei Pang<sup>1,*</sup>,</span>
-            <span class="author-block lead-author"><a href="https://edward-jianqaq.github.io/" target="_blank" rel="noopener">Xiangru Jian</a><sup>2,*</sup>,</span>
-            <span class="author-block lead-author">Hehan Li<sup>1,*</sup>,</span>
-            <span class="author-block lead-author">Zhixuan Yu<sup>1,*</sup>,</span>
-            <span class="author-block lead-author">Alex Xue<sup>2,*</sup>,</span>
-            <span class="author-block">Jinyang Li<sup>3</sup>,</span>
-            <span class="author-block">Zhengyuan Dong<sup>2</sup>,</span>
-            <span class="author-block">Xinjian Zhao<sup>1</sup>,</span>
-            <span class="author-block">Hao Xu<sup>4</sup>,</span>
-            <span class="author-block">Chao Zhang<sup>5</sup>,</span>
-            <span class="author-block">Reynold Cheng<sup>3</sup>,</span>
-            <span class="author-block">M. Tamer &Ouml;zsu<sup>2</sup>,</span>
-            <span class="author-block">Tianshu Yu<sup>1,&dagger;</sup></span>
+            <span class="author-block"><a href="https://github.com/weipang142857" target="_blank" rel="noopener">Wei Pang</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://edward-jianqaq.github.io/" target="_blank" rel="noopener">Xiangru Jian</a><sup>2,*</sup>,</span>
+            <span class="author-block"><a href="https://github.com/studying996007" target="_blank" rel="noopener">Hehan Li</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://github.com/Y-xvan" target="_blank" rel="noopener">Zhixuan Yu</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/alex-xjx/" target="_blank" rel="noopener">Alex Xue</a><sup>2,*</sup>,</span>
+            <span class="author-block"><a href="https://jinyang-li.me/" target="_blank" rel="noopener">Jinyang Li</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://doradong-2023.github.io/DoraDong/" target="_blank" rel="noopener">Zhengyuan Dong</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://sduzxj.github.io/" target="_blank" rel="noopener">Xinjian Zhao</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://hao7748.github.io/person-web/" target="_blank" rel="noopener">Hao Xu</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://chaozhang-cs.github.io/" target="_blank" rel="noopener">Chao Zhang</a><sup>5</sup>,</span>
+            <span class="author-block"><a href="https://reynold.hku.hk/" target="_blank" rel="noopener">Reynold Cheng</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://cs.uwaterloo.ca/~tozsu/" target="_blank" rel="noopener">M. Tamer &Ouml;zsu</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://mypage.cuhk.edu.cn/academics/yutianshu/" target="_blank" rel="noopener">Tianshu Yu</a><sup>1,&dagger;</sup></span>
           </div>
           <div class="author-affiliations">
             <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong, Shenzhen</span>
@@ -130,11 +137,13 @@
             <span class="icon"><i class="fab fa-github"></i></span>
             <span>Code</span>
           </a>
-          <a href="https://huggingface.co/logo-lab" target="_blank" rel="noopener" class="button is-dark">
-            <span class="icon"><i class="fas fa-database"></i></span>
-            <span>Data</span>
-          </a>
         </div>
+
+        <p class="hero-datasets"><i class="fas fa-database"></i> Datasets:
+          <a href="https://huggingface.co/datasets/logo-lab/trl-ctbench" target="_blank" rel="noopener">TRL-CTbench</a> &middot;
+          <a href="https://huggingface.co/datasets/logo-lab/trl-rbench" target="_blank" rel="noopener">TRL-Rbench</a> &middot;
+          <a href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener">TRL-DLTE</a>
+        </p>
 
         <!-- Hero teaser: TRL-Bench at a glance -->
         <div class="hero-teaser-wrap">
@@ -150,6 +159,8 @@
       <nav class="content-nav">
         <a href="#overview" class="nav-item active">Overview</a>
         <a href="#suites" class="nav-item">Three Suites</a>
+        <a href="#ctbench" class="nav-item">CTbench</a>
+        <a href="#rbench" class="nav-item">Rbench</a>
         <a href="#dlte" class="nav-item">TRL-DLTE</a>
         <a href="#demo" class="nav-item">Demo</a>
         <a href="#findings" class="nav-item">Findings</a>
@@ -237,18 +248,24 @@
           <h3>TRL-CTbench</h3>
           <p class="suite-tag">Column &amp; table transfer &middot; 13 tasks</p>
           <p>Eight column-level and five table-level tasks across <strong>schema understanding</strong>, <strong>joinability</strong>, <strong>unionability</strong>, and <strong>grounding</strong> (table QA &amp; retrieval). Twenty standardized column/table datasets; evaluated on the 10 of 20 models that natively expose column or table embeddings.</p>
+          <p class="suite-result"><strong>Leader:</strong> Starmie &mdash; 0.662 MAP Union Search, 0.764 R@GT Schema Matching.</p>
+          <a class="suite-data-link" href="https://huggingface.co/datasets/logo-lab/trl-ctbench" target="_blank" rel="noopener"><i class="fas fa-database"></i> TRL-CTbench dataset &rarr;</a>
         </div>
         <div class="component-card">
           <div class="component-icon groundcua"><i class="fas fa-link"></i></div>
           <h3>TRL-Rbench</h3>
           <p class="suite-tag">Row transfer &middot; prediction + linkage</p>
           <p>Within-table <strong>row prediction</strong> over 50 OpenML-derived tables with 123 hand-verified targets (77 classification, 46 regression), and cross-table <strong>record linkage</strong> over 16 datasets, split into Clean and Robust linkage. Tests whether one row embedding transfers both within and across tables.</p>
+          <p class="suite-result"><strong>Leader:</strong> TabICL &mdash; 0.816 AUROC row prediction; BERT/GTE lead Clean/Robust linkage.</p>
+          <a class="suite-data-link" href="https://huggingface.co/datasets/logo-lab/trl-rbench" target="_blank" rel="noopener"><i class="fas fa-database"></i> TRL-Rbench dataset &rarr;</a>
         </div>
         <div class="component-card featured">
           <div class="component-icon videocua"><i class="fas fa-water"></i></div>
           <h3>TRL-DLTE</h3>
           <p class="suite-tag">Compositional &middot; all three granularities</p>
           <p>Multi-stage <strong>Data-Lake Table Enrichment</strong> over a <strong>47,772-table</strong> lake built from 1,379 parent tables. Retrieve with table embeddings, align columns with column embeddings, match rows with row embeddings &mdash; a single composition test for the whole benchmark.</p>
+          <p class="suite-result"><strong>Best pipeline:</strong> TUTA/GTE/GTE &mdash; 0.229 UJ-H; capability-matched hybrids beat monoliths.</p>
+          <a class="suite-data-link" href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener"><i class="fas fa-database"></i> TRL-DLTE dataset &rarr;</a>
         </div>
       </div>
 
@@ -257,6 +274,64 @@
         <img src="./static/images/data-construction.png" alt="Curation of TRL-Rbench row-prediction tables (158 candidate tables filtered to 50 tables with 123 targets) and assembly of the TRL-DLTE lake (1,379 TabFact/WTQ parents fragmented into seed queries and union/join targets; 11,032 targets embedded with 36,740 CKAN distractors into a 47,772-table lake)" class="pipeline-image">
         <p class="pipeline-caption"><strong>Curated assets.</strong> (a)&nbsp;TRL-Rbench row-prediction curation: 158 candidate tables pass rule screening, degeneracy audit, and human review with label repair into <strong>50 tables with 123 targets</strong>. (b)&nbsp;TRL-DLTE lake assembly: 1,379 TabFact/WTQ parents are fragmented at four noise tiers; <strong>11,032 targets</strong> are embedded alongside <strong>36,740 CKAN distractors</strong> in a <strong>47,772-table</strong> lake (parent-disjoint splits).</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Inside TRL-CTbench Section -->
+  <section class="section" id="ctbench">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Inside TRL-CTbench: Column &amp; Table Transfer</h2>
+      <p class="section-subtitle">Thirteen tasks &mdash; eight column-level, five table-level &mdash; probe column- and table-embeddings across four capabilities, on the 10 of 20 models that natively expose them. No pretraining recipe leads everywhere: family-level rank shifts from surface-text tasks to cross-table geometry.</p>
+
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="component-icon uivision"><i class="fas fa-tags"></i></div>
+          <h3>Schema understanding</h3>
+          <p>Column type prediction &amp; relation extraction. <strong>Generic text encoders lead</strong> &mdash; BERT takes the best Schema family rank (NR&nbsp;0.000&nbsp;&darr;) where headers and short cell strings carry most of the signal.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon groundcua"><i class="fas fa-code-branch"></i></div>
+          <h3>Joinability</h3>
+          <p>Join search across tables. <strong>GTE</strong> leads Join Search &mdash; its retrieval-contrastive pretraining matches the cross-table cosine setup better than generic schema encoders.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon videocua"><i class="fas fa-object-group"></i></div>
+          <h3>Unionability</h3>
+          <p>Union search &amp; schema matching &mdash; cross-table alignment geometry. <strong>Starmie</strong>'s contrastive objective wins both: <strong>0.662 MAP</strong> (Union Search) and <strong>0.764 R@GT</strong> (Schema Matching).</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon uivision"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h3>Grounding</h3>
+          <p>Table QA, retrieval &amp; subset. The text-table family leads &mdash; <strong>TaBERT</strong> best Grounding rank (NR&nbsp;0.198&nbsp;&darr;); task wins split between TURL (Table QA, 0.277 Acc) and GTE (Table Retrieval, 0.476 MRR).</p>
+        </div>
+      </div>
+
+      <p class="results-note"><strong>Specialization gap.</strong> Generic-text rank degrades from Schema&nbsp;&rarr;&nbsp;Grounding (BERT NR 0.000&nbsp;&rarr;&nbsp;0.397), while specialists win exactly the Union and Grounding tasks that reward structure &mdash; no recipe behaves like a universal representation.</p>
+    </div>
+  </section>
+
+  <!-- Inside TRL-Rbench Section -->
+  <section class="section" id="rbench" style="background: rgba(47, 42, 107, 0.025);">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Inside TRL-Rbench: Row Transfer</h2>
+      <p class="section-subtitle">One row embedding, two transfer regimes &mdash; within-table prediction and cross-table linkage. They reward different training scopes, so no encoder leads both.</p>
+
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="component-icon uivision"><i class="fas fa-chart-line"></i></div>
+          <h3>Row Prediction</h3>
+          <p class="suite-tag">Within-table &middot; intra-table transfer</p>
+          <p>Prediction over <strong>50 OpenML tables</strong> with <strong>123 targets</strong> (77 classification, 46 regression). Prior-based <strong>TabICL</strong> leads &mdash; <strong>0.816 AUROC</strong> (Macro-F1 0.671) &mdash; layering target-table adaptation on a meta-pretrained prior.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon groundcua"><i class="fas fa-link"></i></div>
+          <h3>Record Linkage</h3>
+          <p class="suite-tag">Cross-table &middot; inter-table transfer</p>
+          <p>Identity resolution over <strong>16 datasets</strong>, split into Clean and Robust. <strong>Transfer encoders win</strong>: BERT on Clean Linkage (<strong>0.418 F1</strong>), GTE on Robust Linkage (NR&nbsp;0.048&nbsp;&darr;), with TransTab second on Robust.</p>
+        </div>
+      </div>
+
+      <p class="results-note"><strong>Transfer-scope gap.</strong> Target-table self-supervision fits locally (strong on prediction, weak on linkage); shared transfer encoders give comparable row spaces (strong on linkage, mid-pack on prediction). The same row-matching capability resurfaces as TRL-DLTE Stage&nbsp;3 &mdash; the two agree at <strong>|&rho;|&nbsp;=&nbsp;0.80</strong>.</p>
     </div>
   </section>
 
@@ -295,67 +370,6 @@
             <p>End-to-end union/join recall via <strong>UJ-H</strong> (their per-query harmonic mean), with Cell&nbsp;F1 as a complementary cell-recovery diagnostic.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Demo Section: chromeless auto-looping viewer (no controls) -->
-  <section class="section" id="demo" style="background: rgba(109, 75, 196, 0.04);">
-    <div class="container is-max-desktop">
-      <h2 class="section-title">Demo</h2>
-      <p class="section-subtitle">A hands-off fly-through of the <strong>1,120</strong> TRL-DLTE pipelines &mdash; every Stage-1 &times; Stage-2 &times; Stage-3 combination, colored by end-to-end UJ-H. The cube auto-tours on loop; no controls to fiddle with.</p>
-
-      <div class="demo-wrap">
-        <iframe class="demo-frame" src="viewer/dlte_voxel.html?embed=1" title="TRL-DLTE voxel auto-tour" loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Findings Section -->
-  <section class="section" id="findings">
-    <div class="container is-max-desktop">
-      <h2 class="section-title">Key Findings</h2>
-      <p class="section-subtitle">Once downstream conditions are standardized, encoder quality is <strong>capability-specific</strong> rather than captured by a single leaderboard &mdash; and end-to-end quality depends on how capabilities compose, not on per-stage rank in isolation.</p>
-
-      <div class="videocua-hero">
-        <div class="vcua-stat-big">
-          <div class="vcua-number">20</div>
-          <div class="vcua-desc">encoders &mdash; no single universal winner</div>
-        </div>
-        <div class="vcua-divider"></div>
-        <div class="vcua-stat-big">
-          <div class="vcua-number">0.139&rarr;0.229<span class="vcua-unit">UJ-H</span></div>
-          <div class="vcua-desc">hybrids beat the best monolith</div>
-        </div>
-        <div class="vcua-divider"></div>
-        <div class="vcua-stat-big">
-          <div class="vcua-number">0.80<span class="vcua-unit">&rho;</span></div>
-          <div class="vcua-desc">row identity transfers across suites (p=6.3e-4)</div>
-        </div>
-      </div>
-
-      <div class="frontiers-grid">
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-chart-pie"></i></div>
-          <h4>No universal encoder</h4>
-          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT), and TaBERT leads Grounding (0.198 NR&nbsp;&darr;). Quality is capability-specific, not one leaderboard.</p>
-        </div>
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-puzzle-piece"></i></div>
-          <h4>Stacking winners &ne; best pipeline</h4>
-          <p>In <strong>TRL-DLTE</strong>, the best dev-selected hybrid <strong>TUTA/GTE/GTE</strong> reaches 0.229 UJ-H &mdash; 0.090 above the best monolithic <strong>BERT/BERT/BERT</strong> (0.139). Per-stage marginal leaders assemble to just 0.134. Composition is non-additive: capability-matched hybrids win.</p>
-        </div>
-        <div class="frontier-card">
-          <div class="frontier-icon"><i class="fas fa-shuffle"></i></div>
-          <h4>Row signal is not monolithic</h4>
-          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, 0.418 F1; GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
-        </div>
-      </div>
-
-      <!-- Capability radar figure -->
-      <div class="pipeline-section" style="margin-top: 2.5rem; max-width: 760px; margin-left: auto; margin-right: auto;">
-        <img src="./static/images/capability-radar.png" alt="Radar chart in which different tabular encoder families spike on different capability axes, illustrating that no single model dominates across capabilities" class="pipeline-image">
-        <p class="pipeline-caption"><strong>No model spans every capability.</strong> Different encoder families peak on different capability axes &mdash; surface-text tasks reward generic text encoders, while cross-table alignment and matching reward structure-aware specialists.</p>
       </div>
 
       <!-- Representative DLTE pipelines -->
@@ -410,6 +424,70 @@
         <p class="results-note">UJ-H is the harmonic mean of union- and join-recall. The dev-selected headline hybrid scores <strong>0.229</strong> (0.090 above the best monolith); the unrestricted test maximum is 0.253 (Starmie/GTE/GTE). Explore all 1,120 pipelines in the <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">interactive viewer &rarr;</a></p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Demo Section: chromeless auto-looping viewer (no controls) -->
+  <section class="section" id="demo" style="background: rgba(47, 42, 107, 0.025);">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Demo</h2>
+      <p class="section-subtitle">A hands-off fly-through of the <strong>1,120</strong> TRL-DLTE pipelines &mdash; every Stage-1 &times; Stage-2 &times; Stage-3 combination, colored by end-to-end UJ-H. The cube auto-tours on loop; no controls to fiddle with.</p>
+
+      <div class="demo-wrap">
+        <iframe class="demo-frame" src="viewer/dlte_voxel.html?embed=1" title="TRL-DLTE voxel auto-tour" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Findings Section -->
+  <section class="section" id="findings">
+    <div class="container is-max-desktop">
+      <h2 class="section-title">Key Findings</h2>
+      <p class="section-subtitle">Once downstream conditions are standardized, encoder quality is <strong>capability-specific</strong> rather than captured by a single leaderboard &mdash; and end-to-end quality depends on how capabilities compose, not on per-stage rank in isolation.</p>
+
+      <div class="videocua-hero">
+        <div class="vcua-stat-big">
+          <div class="vcua-number">20</div>
+          <div class="vcua-desc">encoders &mdash; no single universal winner</div>
+        </div>
+        <div class="vcua-divider"></div>
+        <div class="vcua-stat-big">
+          <div class="vcua-number">0.139&rarr;0.229<span class="vcua-unit">UJ-H</span></div>
+          <div class="vcua-desc">hybrids beat the best monolith</div>
+        </div>
+        <div class="vcua-divider"></div>
+        <div class="vcua-stat-big">
+          <div class="vcua-number">0.80<span class="vcua-unit">&rho;</span></div>
+          <div class="vcua-desc">row identity transfers across suites (p=6.3e-4)</div>
+        </div>
+      </div>
+
+      <div class="frontiers-grid">
+        <div class="frontier-card">
+          <div class="frontier-icon"><i class="fas fa-chart-pie"></i></div>
+          <h4>No universal encoder</h4>
+          <p>In <strong>TRL-CTbench</strong>, generic text encoders (BERT, GTE) lead where headers and short cell strings carry the signal, while tabular specialists win on cross-table alignment and grounding &mdash; e.g. Starmie tops Union Search (0.662 MAP) and Schema Matching (0.764 R@GT), and TaBERT leads Grounding (0.198 NR&nbsp;&darr;). Quality is capability-specific, not one leaderboard.</p>
+        </div>
+        <div class="frontier-card">
+          <div class="frontier-icon"><i class="fas fa-puzzle-piece"></i></div>
+          <h4>Stacking winners &ne; best pipeline</h4>
+          <p>In <strong>TRL-DLTE</strong>, the best dev-selected hybrid <strong>TUTA/GTE/GTE</strong> reaches 0.229 UJ-H &mdash; 0.090 above the best monolithic <strong>BERT/BERT/BERT</strong> (0.139). Per-stage marginal leaders assemble to just 0.134. Composition is non-additive: capability-matched hybrids win.</p>
+        </div>
+        <div class="frontier-card">
+          <div class="frontier-icon"><i class="fas fa-shuffle"></i></div>
+          <h4>Row signal is not monolithic</h4>
+          <p>In <strong>TRL-Rbench</strong>, within-table prediction and cross-table linkage reward different training scopes: prior-based TabICL leads prediction (AUROC 0.816), while transfer encoders lead linkage (BERT on Clean, 0.418 F1; GTE on Robust). DLTE Stage-3 row matching agrees with record linkage at <strong>|&rho;|=0.80</strong> &mdash; a shared identity-resolution capability.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection-title" style="margin-top: 3rem;">Where each encoder family peaks</h3>
+      <p class="section-subtitle">A capability profile of representative encoders &mdash; the shape, not any single score, is the point.</p>
+      <!-- Capability radar figure -->
+      <div class="pipeline-section" style="margin-top: 1.5rem; max-width: 760px; margin-left: auto; margin-right: auto;">
+        <img src="./static/images/capability-radar.png" alt="Radar chart in which different tabular encoder families spike on different capability axes, illustrating that no single model dominates across capabilities" class="pipeline-image">
+        <p class="pipeline-caption"><strong>No model spans every capability.</strong> Different encoder families peak on different capability axes &mdash; surface-text tasks reward generic text encoders, while cross-table alignment and matching reward structure-aware specialists.</p>
+      </div>
+
       <!-- Three gaps -->
       <p style="text-align: center; margin-top: 2.5rem; font-size: 0.95rem; color: var(--text-secondary); max-width: 820px; margin-left: auto; margin-right: auto;">
         Read jointly, the three suites expose three structural gaps that single-paradigm evaluations cannot isolate: a <strong>specialization gap</strong> in model choice (CTbench), a <strong>transfer-scope gap</strong> between intra- and cross-table transfer (Rbench), and a <strong>composition gap</strong> where granularities interact rather than stack (DLTE).
@@ -449,8 +527,13 @@
     <p style="margin-top: 0.5rem;">
       <a href="https://arxiv.org/abs/2606.09323" target="_blank" rel="noopener">Paper</a> &middot;
       <a href="https://github.com/LOGO-CUHKSZ/TRL-Bench" target="_blank" rel="noopener">Code</a> &middot;
-      <a href="https://huggingface.co/logo-lab" target="_blank" rel="noopener">Data</a> &middot;
       <a href="viewer/dlte_voxel.html" target="_blank" rel="noopener">Interactive Viewer</a>
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+      Datasets:
+      <a href="https://huggingface.co/datasets/logo-lab/trl-ctbench" target="_blank" rel="noopener">TRL-CTbench</a> &middot;
+      <a href="https://huggingface.co/datasets/logo-lab/trl-rbench" target="_blank" rel="noopener">TRL-Rbench</a> &middot;
+      <a href="https://huggingface.co/datasets/logo-lab/trl-dlte" target="_blank" rel="noopener">TRL-DLTE</a>
     </p>
     <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.7;">Page template adapted from cua-suite / Nerfies.</p>
   </footer>

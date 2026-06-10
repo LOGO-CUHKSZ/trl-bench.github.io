@@ -41,7 +41,7 @@
 /* ---- Hero teaser image ---- */
 .hero-teaser-wrap {
   margin: 1.5rem auto 1.25rem;
-  max-width: 740px;
+  max-width: 100%;   /* fill the hero column (was 740px — teaser read too small) */
 }
 .hero-teaser {
   width: 100%;
@@ -142,3 +142,49 @@
 }
 .leader-list li:last-child { border-bottom: none; }
 .leader-list strong { color: var(--text-primary); }
+
+/* ---- Suite cards: per-suite key result + direct dataset link ---- */
+.component-card .suite-result {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  background: rgba(47, 42, 107, 0.05);
+  border-left: 3px solid var(--teal);
+  padding: 0.5rem 0.7rem;
+  border-radius: 0 6px 6px 0;
+  margin: 0.85rem 0 0.6rem;
+  line-height: 1.45;
+}
+.component-card .suite-result strong { color: var(--teal); }
+.component-card .suite-data-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+}
+.component-card .suite-data-link:hover { text-decoration: underline; }
+.component-card .suite-data-link i { font-size: 0.85em; }
+
+/* ---- Hero datasets link row (3 direct dataset links) ---- */
+.hero-datasets {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.9rem;
+}
+.hero-datasets i { color: var(--teal); margin-right: 0.3rem; }
+.hero-datasets a { color: var(--teal); font-weight: 600; text-decoration: none; }
+.hero-datasets a:hover { text-decoration: underline; }
+
+/* ---- Inside-CTbench: balanced 2x2 capability grid (4 cards) ---- */
+@media (min-width: 720px) {
+  #ctbench .components-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
